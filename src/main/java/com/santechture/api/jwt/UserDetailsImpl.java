@@ -23,31 +23,23 @@ public class UserDetailsImpl implements UserDetails {
     @JsonIgnore
     private String password;
 
-    private Collection<? extends GrantedAuthority> authorities;
 
-    public UserDetailsImpl(Integer id, String username, String password,
-                           Collection<? extends GrantedAuthority> authorities) {
+    public UserDetailsImpl(Integer id, String username, String password) {
         this.adminId = id;
         this.username = username;
         this.password = password;
-        this.authorities = authorities;
     }
 
     public static UserDetailsImpl build(Admin admin) {
-        List<GrantedAuthority> authorities = admin.getRoles().stream()
-                .map(role -> new SimpleGrantedAuthority(role.getName().name()))
-                .collect(Collectors.toList());
-
         return new UserDetailsImpl(
                 admin.getAdminId(),
                 admin.getUsername(),
-                admin.getPassword(),
-                authorities);
+                admin.getPassword());
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return authorities;
+        return null;
     }
 
     @Override

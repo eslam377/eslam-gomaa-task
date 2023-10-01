@@ -24,7 +24,7 @@ public class AdminController {
     }
 
     @PostMapping
-    public ResponseEntity<GeneralResponse> login(@RequestBody LoginRequest request) throws BusinessExceptions {
+    public ResponseEntity<?> login(@RequestBody LoginRequest request) throws BusinessExceptions {
         return adminService.login(request);
     }
 
