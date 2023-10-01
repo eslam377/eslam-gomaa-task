@@ -1,6 +1,7 @@
-package com.santechture.api.configuration;
+package com.santechture.api.jwt;
 
 import com.santechture.api.jwt.AuthenticationJwtTokenFilter;
+import com.santechture.api.jwt.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

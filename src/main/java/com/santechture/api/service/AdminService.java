@@ -25,7 +25,7 @@ public class AdminService {
 
     public ResponseEntity<GeneralResponse> login(LoginRequest request) throws BusinessExceptions {
 
-        Admin admin = adminRepository.findByUsernameIgnoreCase(request.getUsername());
+        Admin admin = adminRepository.findByUsernameIgnoreCase(request.getUsername()).get();
 
         if(Objects.isNull(admin) || !admin.getPassword().equals(request.getPassword())){
             throw new BusinessExceptions("login.credentials.not.match");

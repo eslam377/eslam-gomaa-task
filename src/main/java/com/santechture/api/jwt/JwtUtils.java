@@ -1,5 +1,4 @@
 package com.santechture.api.jwt;
-import com.santechture.api.entity.Admin;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
@@ -24,7 +23,7 @@ public class JwtUtils {
 
     public String generateJwtToken(Authentication authentication) {
 
-        Admin userPrincipal = (Admin) authentication.getPrincipal();
+        UserDetailsImpl userPrincipal = (UserDetailsImpl) authentication.getPrincipal();
 
         return Jwts.builder()
                 .setSubject((userPrincipal.getUsername()))
@@ -58,4 +57,13 @@ public class JwtUtils {
         }
         return false;
     }
+}
+
+
+
+
+
+
+
+
 }
